@@ -16,6 +16,8 @@
 
 @synthesize navBar = _navBar;
 @synthesize searchBar = _searchBar;
+@synthesize tableView = _tableView;
+@synthesize testView = _testView;
 
 - (void)viewDidLoad
 {
@@ -49,6 +51,8 @@
     return YES;
 }
 
+
+//検索窓をタップしたときに呼ばれる
 -(void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
 {
     [UIView animateWithDuration:0.2
@@ -57,7 +61,18 @@
                          _searchBar.frame = CGRectMake(0, 0, 320, 44);
                      }
      ];
+    
+    //[self.view bringSubviewToFront:_tableView];
+    //[self.view bringSubviewToFront:_testView];
 }
+
+
+-(void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller
+{
+    [self.view bringSubviewToFront:_tableView];
+    //[self.view bringSubviewToFront:_testView];
+}
+
 
 /*
 -(void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller
